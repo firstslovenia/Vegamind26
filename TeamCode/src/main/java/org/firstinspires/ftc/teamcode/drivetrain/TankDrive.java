@@ -16,6 +16,9 @@ public class TankDrive extends DriveTrain {
     @Override
     public void drive(Gamepad gamepad) {
         backRight.setPower(gamepad.left_stick_y);
+        frontRight.setPower(gamepad.left_stick_y);
+
         backLeft.setPower(-gamepad.right_stick_y);
+        frontLeft.setPower(-gamepad.right_stick_y);
     }
 }
