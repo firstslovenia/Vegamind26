@@ -3,22 +3,22 @@ package org.firstinspires.ftc.teamcode.drivetrain;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-public class TankDrive extends DriveTrain {
+public class TankDrive extends Drivetrain {
 
-    public TankDrive(DcMotor backLeft, DcMotor backRight, DcMotor frontLeft, DcMotor frontRight) {
-        super(backLeft, backRight, frontLeft, frontRight);
-        backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    public TankDrive(Motors motors) {
+        super(null, null, motors);
+        motors.rearRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motors.rearLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motors.frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motors.frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     @Override
     public void drive(Gamepad gamepad) {
-        backRight.setPower(gamepad.left_stick_y);
-        frontRight.setPower(gamepad.left_stick_y);
+        motors.rearRight.setPower(gamepad.left_stick_y);
+        motors.frontRight.setPower(gamepad.left_stick_y);
 
-        backLeft.setPower(-gamepad.right_stick_y);
-        frontLeft.setPower(-gamepad.right_stick_y);
+        motors.rearLeft.setPower(-gamepad.right_stick_y);
+        motors.frontLeft.setPower(-gamepad.right_stick_y);
     }
 }
